@@ -9,51 +9,52 @@ import Typography from "@mui/material/Typography";
 import logo from '../img/logo.jpg'
 
 
+
 export function NavBar() {
   return (
-    <AppBar position="static" sx={{ color: 'ligth-blue', backgroundColor: 'orange', borderColor: 'amber', }}>
+    <AppBar position="static" sx={{ color: 'ligth-blue', backgroundColor: 'orange', borderColor: 'amber'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{justifyContent: 'space-between'}}>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Avatar alt="Remy Sharp" src={logo} />
             <Typography
-              variant="h6"
               noWrap
               component="a"
-              href="/"
               sx={{
-                ml: 2,
-                fontFamily: "monospace",
+                ml: 1,
+                mt:1,
+                fontSize: 35,
+                fontFamily: `gabriola`,
                 fontWeight: 700,
                 letterSpacing: ".1rem",
                 color: "inherit",
                 textDecoration: "none"
               }}
             >
-              Arte de gatitos!
+              Kittens Art!
             </Typography>
           </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center'}}>
+          <Box sx={{}}>
             <Button variant="contained" sx={{
               color: 'black', backgroundColor: 'white', borderColor: 'black', mr: 5, '&:hover': {
                 color: `white`,
                 background: "#834bff",
               },
-            }}>Inicio</Button>
+            }}>Home</Button>
             <Button variant="text" size="small" sx={{
-              color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 5, '&:hover': {
+              color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 4, '&:hover': {
                 color: `white`,
                 background: "#834bff",
               },
-            }}>Galeria</Button>
+            }}>Gallery</Button>
             <Button variant="text" size="small" sx={{
-              color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 5, '&:hover': {
+              color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 4, '&:hover': {
                 color: `white`,
                 background: "#834bff",
               },
-            }}>Nosotros</Button>
+            }}>About us</Button>
             <Button variant="text" size="small" sx={{
-              color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 5, '&:hover': {
+              color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 4, '&:hover': {
                 color: `white`,
                 background: "#834bff",
               },
