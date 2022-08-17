@@ -85,7 +85,6 @@ export function NavBar() {
                 color: 'black', backgroundColor: 'white', borderColor: 'black', mr: 4, '&:hover': {
                   color: `white`,
                   background: "#834bff",
-                  display: { xs: 'none', sm: 'flex', md: 'flex' }
                 },
               }}>Home</Button>
               <Button variant="text" size="small" sx={{
