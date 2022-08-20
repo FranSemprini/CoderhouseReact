@@ -6,13 +6,13 @@ import Button from '@mui/material/Button';
 import Toolbar from "@mui/material/Toolbar";
 import Avatar from '@mui/material/Avatar';
 import Typography from "@mui/material/Typography";
-import logo from '../img/logo.jpg'
+import logo from '../assets/logo.jpg'
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-
-
+import { CartWidget } from "./CartWidget";
+import './NavBar.scss'
 
 export function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -79,47 +79,53 @@ export function NavBar() {
               Kittens Art!
             </Typography>
           </Box>
-          <Box sx={{ display: { xs: 'none', sm: 'flex', md: 'flex' } }}>
-            <div>
+          <Box sx={{ display: { xs: 'none', sm: 'flex', alignItems: `center` } }}>
+            <div className="navBar__links">
               <Button variant="contained" sx={{
-                color: 'black', backgroundColor: 'white', borderColor: 'black', mr: 4, '&:hover': {
+                color: 'black', backgroundColor: 'white', borderColor: 'black', mr: 3, '&:hover': {
                   color: `white`,
                   background: "#834bff",
                 },
               }}>Home</Button>
-              <Button variant="text" size="small" sx={{
-                color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 3, '&:hover': {
+              <Button variant="text" sx={{
+                color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 1.5, mr: 1, '&:hover': {
                   color: `white`,
                   background: "#834bff",
                 },
               }}>Gallery</Button>
-              <Button variant="text" size="small" sx={{
-                color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 3, '&:hover': {
+              <Button variant="text" sx={{
+                color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 1.5, mr: 1, '&:hover': {
                   color: `white`,
                   background: "#834bff",
                 },
               }}>About us</Button>
             </div>
-            <Button variant="text" size="small" sx={{
-              color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 3, '&:hover': {
-                color: `white`,
-                background: "#834bff",
-              },
-            }}>LogIn</Button>
+            <Box component="div" sx={{ display: 'inline-grid', alignItems: `center`,  justifyItems: `center`,  }}>
+              <div className="navBar__links">
+                <Button variant="text" sx={{
+                  color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 1, mr:1, mt: 0.5, '&:hover': {
+                    color: `white`,
+                    background: "#834bff",
+                  },
+                }}>LogIn</Button>
+              </div>
+              <CartWidget sx={{ ml: 1.5 }} />
+            </Box>
           </Box>
-
-          <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
-            <Button variant="text" size="small" sx={{
-              color: 'white', backgroundColor: 'orange', borderColor: 'black', '&:hover': {
-                color: `white`,
-                background: "#834bff",
-              },
-            }}>LogIn</Button>
+          <Box component="div" sx={{ display: { xs: 'inline-grid', sm: 'none', alignItems: `center` } }}>
+            <div className="navBar__links">
+              <Button variant="text" sx={{
+                color: 'white', backgroundColor: 'orange', borderColor: 'black', mt: 0.5, '&:hover': {
+                  color: `white`,
+                  background: "#834bff",
+                },
+              }}>LogIn</Button>
+            </div>
+            <CartWidget />
           </Box>
-
         </Toolbar>
       </Container>
-    </AppBar>
+    </AppBar >
   );
 
 }

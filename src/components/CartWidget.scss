@@ -1,0 +1,21 @@
+.cartWidget {
+    background-color: rgb(255, 187, 52);
+    border: 1px solid rgba(131,75,255,0.4);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 2px 0 2px 0;
+    margin: 3px 0 5px 0;
+    color: #834bff;
+    font-size: 18px;
+    font-weight: 600;
+    height: 30px;
+    width: 70px;
+    &:hover {
+        color: white;
+        background-color: #834bff;
+        transition: color 0.5s, background-color 0.5s;
+    }
+}
