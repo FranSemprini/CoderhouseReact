@@ -7,7 +7,7 @@ export const CartWidget = ( {item = 0} ) => {
     return (
         <div className="cartWidget">
             <ShoppingCartIcon sx={{ fontSize: 20 }}></ShoppingCartIcon>
-            <p> {item} </p>
+            <p> {item } </p>
         </div>
     )
 }
