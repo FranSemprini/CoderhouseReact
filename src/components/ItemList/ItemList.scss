@@ -1,0 +1,14 @@
+.items__title {
+    text-align: center;
+    font-size: 40px;
+    font-family: gabriola;
+}
+
+.items__list {
+    display: grid;
+    gap: 1 rem;
+    grid-auto-rows: 350px;
+    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    justify-items: center
+}
+

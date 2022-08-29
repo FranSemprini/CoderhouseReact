@@ -1,0 +1,44 @@
+.product {
+    background-color: orange;
+    text-align: center;
+    width: 250px;
+    border-radius: 5px;
+    box-shadow: 0px 5px 4px 4px rgba(128,48,255,0.46);
+    margin: 10px;
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    > h4 {
+        margin: 0;
+        font-size: 25px;
+    }
+    > h5 {
+        margin: 3px;
+        font-size: 20px;
+    }
+    > p {
+        margin: 5px;
+    }
+    .stock {
+        align-self: flex-end
+    }
+    &:hover {
+        animation-direction:alternate;
+        transform: translateY(-10px);
+        box-shadow: 0px 9px 4px 4px rgba(128,48,255,0.77);
+    }
+}
+
+.product > img {
+    width: 175px;
+    border: 2px solid #ED9024;
+    border-radius: 40px 0px 40px 0px;
+    margin: 5px;
+}
+
+
+
+.product > h5 {
+
+}

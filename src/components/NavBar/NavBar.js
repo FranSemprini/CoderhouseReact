@@ -6,12 +6,12 @@ import Button from '@mui/material/Button';
 import Toolbar from "@mui/material/Toolbar";
 import Avatar from '@mui/material/Avatar';
 import Typography from "@mui/material/Typography";
-import logo from '../assets/logo.jpg'
+import logo from "../../assets/logo.jpg"
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import { CartWidget } from "./CartWidget";
+import { CartWidget } from "../CartWidget/CartWidget";
 import './NavBar.scss'
 
 export function NavBar() {
