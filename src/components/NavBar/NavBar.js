@@ -13,6 +13,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { CartWidget } from "../CartWidget/CartWidget";
 import './NavBar.scss'
+import { Link } from "react-router-dom";
 
 export function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -25,7 +26,7 @@ export function NavBar() {
   };
 
   return (
-    <AppBar position="static" sx={{ color: 'ligth-blue', backgroundColor: 'orange', borderColor: 'amber' }}>
+    <AppBar position="fixed" sx={{ color: 'ligth-blue', backgroundColor: 'orange', borderColor: 'amber'}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
@@ -81,12 +82,14 @@ export function NavBar() {
           </Box>
           <Box sx={{ display: { xs: 'none', sm: 'flex', alignItems: `center` } }}>
             <div className="navBar__links">
+              <Link to="/" className="navigate__links">
               <Button variant="contained" sx={{
                 color: 'black', backgroundColor: 'white', borderColor: 'black', mr: 3, '&:hover': {
                   color: `white`,
                   background: "#834bff",
                 },
               }}>Home</Button>
+              </Link>
               <Button variant="text" sx={{
                 color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 1.5, mr: 1, '&:hover': {
                   color: `white`,

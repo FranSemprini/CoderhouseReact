@@ -5,7 +5,7 @@ import { IconButton } from "@mui/material"
 import './ItemCount.scss'
 import { useState } from 'react';
 
-export const ItemCount = ({ initial, stock, onAdd }) => {
+export const ItemCount = ({ initial, stock, onAdd, desc }) => {
 
     const [counter, setCounter] = useState(initial)
 
@@ -19,9 +19,6 @@ export const ItemCount = ({ initial, stock, onAdd }) => {
 
     return (
         <div className='main__container'>
-            <div className='item__container'>
-                <p> Aca va la foto </p>
-            </div>
             <div className='container__buttons'>
                     <IconButton onClick={handleSubstract} disabled={counter === 1}>
                         <IndeterminateCheckBoxIcon className='product__button' />

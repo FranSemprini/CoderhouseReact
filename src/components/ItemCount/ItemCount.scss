@@ -1,22 +1,13 @@
 .main__container {
-    background-color: orange;
+    background-color: rgb(255, 255, 255);
     display: flex;
-    width: 175px;
-    height: auto;
     flex-direction: column;
+    height: 75px;
     align-items: center;
     border-radius: 5px;
-    padding: 5px 0;
-    box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.56);
-    margin: 10px;
-}
-
-.item__container {
-    background-color: rgb(253, 207, 121);
-    border-radius: 5px;
-    width: 90%;
-    text-align: center;
-    border: 1px solid rgba(131, 75, 255, 0.4);
+    box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.37);
+    margin-top: 15px;
+    margin-bottom: 20px;
 }
 
 .container__buttons {
@@ -50,14 +41,4 @@
 .button__add {
     height: 20px;
     width: 90%;
-}
-
-.product__detail {
-    text-align: center;
-    margin: 5px;
-}
-
-.product__price {
-    text-align: center;
-    margin: 5px;
 }
