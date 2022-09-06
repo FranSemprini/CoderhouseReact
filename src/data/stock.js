@@ -4,6 +4,9 @@ import photo3 from '../assets/photo3.webp'
 import photo4 from '../assets/photo4.webp'
 import photo5 from '../assets/photo5.webp'
 import photo6 from '../assets/photo6.webp'
+import photo7 from '../assets/photo7.webp'
+import photo8 from '../assets/photo8.webp'
+import photo9 from '../assets/photo9.webp'
 
 export const stock = [
 
@@ -67,8 +70,36 @@ export const stock = [
         stock: 150,
         category: `dogs`
     },
-
-
+    {
+        id: 7,
+        nombre: 'Aqueon Glass Aquarium',
+        precio: 200,
+        descripcion: 'Glass Aquarium 29 Gallon',
+        descripcion2: "The Aqueon standard 29-gallon glass aquarium is a dependable option for your pet’s new home. Its high-quality construction and clean silicone edges make this fish tank a great choice—whether you’re a beginner fish pet parent or simply purchasing a larger tank. This all-glass aquarium can be used to create either freshwater or marine aquatic environments for inviting new pets into your home.",
+        img: photo7,
+        stock: 10,
+        category: `fish`
+    },
+    {
+        id: 8,
+        nombre: 'Fluval Bug Bites',
+        precio: 130,
+        descripcion: 'Bites granules small-medium',
+        descripcion2: "Fluval Bug Bites are specifically formulated to address the natural, insect-based feeding habits of fish, providing essential nutrients vital to their growth and development. Naturally palatable! Sustainable Development!",
+        img: photo8,
+        stock: 25,
+        category: `fish`
+    },
+    {
+        id: 9,
+        nombre: 'Anubias minima',
+        precio: 130,
+        descripcion: 'Small freshwater plant',
+        descripcion2: "This freshwater plant can grow upwards of 12 inches in width and is equally suitable for aquariums, terrariums, and paludariums alike. This plant can grow fully submerged or partially, and does well attached to large rocks or on logs.",
+        img: photo9,
+        stock: 25,
+        category: `fish`
+    },
 
 
 

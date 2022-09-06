@@ -77,7 +77,7 @@ export function NavBar() {
                 textDecoration: "none"
               }}
             >
-              Kittens Art!
+              Paw Stuff
             </Typography>
           </Box>
           <Box sx={{ display: { xs: 'none', sm: 'flex', alignItems: `center` } }}>

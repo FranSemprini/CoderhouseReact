@@ -5,7 +5,7 @@ import { IconButton } from "@mui/material"
 import './ItemCount.scss'
 import { useState } from 'react';
 
-export const ItemCount = ({ initial, stock, onAdd, desc }) => {
+export const ItemCount = ({ initial, stock, onAdd}) => {
 
     const [counter, setCounter] = useState(initial)
 
@@ -27,7 +27,6 @@ export const ItemCount = ({ initial, stock, onAdd, desc }) => {
                     <IconButton onClick={handleAdd} disabled={stock === counter}>
                         <AddBoxIcon className='product__button' />
                     </IconButton>
-
             </div>
             <div className='container__add'>
                 <Button className='button__add' variant="contained" sx={{ backgroundColor: `#834bff`, '&:hover': { backgroundColor: '#551fc8' } }}>Add to cart</Button>

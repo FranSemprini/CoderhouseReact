@@ -11,11 +11,11 @@ export const ItemDetail = ({ item }) => {
             </div>
             <div className="ItemDetail__right">
                 <div className="ItemDetail__top">
-                <h2 className="ItemDetail__price">Price: ${item.precio}</h2>
-                <h4 className="ItemDetail__stock">Stock: {item.stock}</h4>
-                <p className="ItemDetail__desc">{item.descripcion2}</p>
+                    <h2 className="ItemDetail__price">Price: ${item.precio}</h2>
+                    <h4 className="ItemDetail__stock">Stock: {item.stock}</h4>
+                    <p className="ItemDetail__desc">{item.descripcion2}</p>
                 </div>
-                <div className="ItemDetail__cant"><ItemCount initial={item.stock > 1 ? 1 : 0} stock={item.stock}/></div>
+                <div className="ItemDetail__cant"><ItemCount initial={item.stock > 1 ? 1 : 0} stock={item.stock} /></div>
             </div>
         </div>
     )
