@@ -26,7 +26,7 @@ export function NavBar() {
   };
 
   return (
-    <AppBar position="fixed" sx={{ color: 'ligth-blue', backgroundColor: 'orange', borderColor: 'amber'}}>
+    <AppBar position="fixed" sx={{ color: 'ligth-blue', backgroundColor: 'orange', borderColor: 'amber' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
           <Box sx={{ display: { xs: 'flex', sm: 'none' } }}>
@@ -61,34 +61,36 @@ export function NavBar() {
               <MenuItem onClick={handleClose}>AboutUs</MenuItem>
             </Menu>
           </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Avatar alt="Remy Sharp" src={logo} />
-            <Typography
-              noWrap
-              component="a"
-              sx={{
-                ml: 1,
-                mt: 1,
-                fontSize: 32,
-                fontFamily: `gabriola`,
-                fontWeight: 700,
-                letterSpacing: ".1rem",
-                color: "inherit",
-                textDecoration: "none"
-              }}
-            >
-              Paw Stuff
-            </Typography>
-          </Box>
+          <Link to="/" className="navigate__links">
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <Avatar alt="Remy Sharp" src={logo} />
+              <Typography
+                noWrap
+                component="a"
+                sx={{
+                  ml: 1,
+                  mt: 1,
+                  fontSize: 32,
+                  fontFamily: `gabriola`,
+                  fontWeight: 700,
+                  letterSpacing: ".1rem",
+                  color: "inherit",
+                  textDecoration: "none"
+                }}
+              >
+                Paw Stuff
+              </Typography>
+            </Box>
+          </Link>
           <Box sx={{ display: { xs: 'none', sm: 'flex', alignItems: `center` } }}>
             <div className="navBar__links">
               <Link to="/" className="navigate__links">
-              <Button variant="contained" sx={{
-                color: 'black', backgroundColor: 'white', borderColor: 'black', mr: 3, '&:hover': {
-                  color: `white`,
-                  background: "#834bff",
-                },
-              }}>Home</Button>
+                <Button variant="contained" sx={{
+                  color: 'black', backgroundColor: 'white', borderColor: 'black', mr: 3, '&:hover': {
+                    color: `white`,
+                    background: "#834bff",
+                  },
+                }}>Home</Button>
               </Link>
               <Button variant="text" sx={{
                 color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 1.5, mr: 1, '&:hover': {
@@ -103,10 +105,10 @@ export function NavBar() {
                 },
               }}>About us</Button>
             </div>
-            <Box component="div" sx={{ display: 'inline-grid', alignItems: `center`,  justifyItems: `center`,  }}>
+            <Box component="div" sx={{ display: 'inline-grid', alignItems: `center`, justifyItems: `center`, }}>
               <div className="navBar__links">
                 <Button variant="text" sx={{
-                  color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 1, mr:1, mt: 0.5, '&:hover': {
+                  color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 1, mr: 1, mt: 0.5, '&:hover': {
                     color: `white`,
                     background: "#834bff",
                   },

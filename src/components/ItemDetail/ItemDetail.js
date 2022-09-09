@@ -1,7 +1,21 @@
+import { useState } from "react"
 import { ItemCount } from "../ItemCount/ItemCount"
 import './ItemDetail.scss'
+import { Select } from "../Select/Select.js"
+
+
 
 export const ItemDetail = ({ item }) => {
+
+    const [counter, setCounter] = useState(item.stock > 1 ? 1 : `Sin Stock`)
+
+    const handleAddCart = () => {
+        const itemToCart = {
+            id: item.id,
+            counter,
+        }
+        console.log(itemToCart)
+    }
 
     return (
         <div className="itemDetail__container">
@@ -15,7 +29,7 @@ export const ItemDetail = ({ item }) => {
                     <h4 className="ItemDetail__stock">Stock: {item.stock}</h4>
                     <p className="ItemDetail__desc">{item.descripcion2}</p>
                 </div>
-                <div className="ItemDetail__cant"><ItemCount initial={item.stock > 1 ? 1 : 0} stock={item.stock} /></div>
+                <div className="ItemDetail__cant"><ItemCount stock={item.stock} counter={counter} onAdd={setCounter} handleAddCart={handleAddCart} price={item.precio} /></div>
             </div>
         </div>
     )

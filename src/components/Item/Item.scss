@@ -4,6 +4,7 @@
 }
 
 .product {
+    position: relative;
     background-color: white;
     text-align: center;
     width: 200px;
@@ -32,10 +33,17 @@
     .stock {
         align-self: flex-end
     }
+    .product__colors {
+        position: absolute;
+        left: 90px;
+        top: -20px;
+        rotate: 40deg;
+    }
     &:hover {
         animation-direction:alternate;
         transform: translateY(-10px);
         box-shadow: 0px 8px 18px 8px #9665f1;    }
+    
 }
 
 .product > img {

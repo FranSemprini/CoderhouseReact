@@ -3,33 +3,33 @@ import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox
 import Button from '@mui/material/Button';
 import { IconButton } from "@mui/material"
 import './ItemCount.scss'
-import { useState } from 'react';
 
-export const ItemCount = ({ initial, stock, onAdd}) => {
-
-    const [counter, setCounter] = useState(initial)
+export const ItemCount = ({stock, counter , onAdd, handleAddCart, price}) => {
 
     const handleSubstract = () => {
-        counter > 1 && setCounter(counter - 1)
+        counter > 1 && onAdd(counter - 1)
     }
 
     const handleAdd = () => {
-        counter < stock && setCounter(counter + 1)
+        counter < stock && onAdd(counter + 1)
     }
+
+    console.log(counter)
+    console.log(price)
 
     return (
         <div className='main__container'>
             <div className='container__buttons'>
-                    <IconButton onClick={handleSubstract} disabled={counter === 1}>
+                    <IconButton onClick={handleSubstract} disabled={counter === 1 || counter === `Sin Stock`}>
                         <IndeterminateCheckBoxIcon className='product__button' />
                     </IconButton>
                     <span className='product__counter'>{counter} </span>
-                    <IconButton onClick={handleAdd} disabled={stock === counter}>
+                    <IconButton onClick={handleAdd} disabled={stock === counter || counter === `Sin Stock`}>
                         <AddBoxIcon className='product__button' />
                     </IconButton>
             </div>
             <div className='container__add'>
-                <Button className='button__add' variant="contained" sx={{ backgroundColor: `#834bff`, '&:hover': { backgroundColor: '#551fc8' } }}>Add to cart</Button>
+                <Button onClick={handleAddCart} className='button__add' variant="contained" sx={{ backgroundColor: `#834bff`, '&:hover': { backgroundColor: '#551fc8' } }} disabled={counter === `Sin Stock`}>Add to cart {!isNaN(counter) && counter * price}</Button>
             </div>
         </div>
 
