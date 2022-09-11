@@ -3,8 +3,12 @@ import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox
 import Button from '@mui/material/Button';
 import { IconButton } from "@mui/material"
 import './ItemCount.scss'
+import { useCartContext } from '../../context/CartContext';
+import { useEffect } from 'react';
 
-export const ItemCount = ({stock, counter , onAdd, handleAddCart, price}) => {
+export const ItemCount = ({stock, counter , onAdd, handleAddCart, price, id}) => {
+
+    const {isInCart} = useCartContext()
 
     const handleSubstract = () => {
         counter > 1 && onAdd(counter - 1)
@@ -14,8 +18,7 @@ export const ItemCount = ({stock, counter , onAdd, handleAddCart, price}) => {
         counter < stock && onAdd(counter + 1)
     }
 
-    console.log(counter)
-    console.log(price)
+    useEffect()
 
     return (
         <div className='main__container'>
@@ -29,7 +32,7 @@ export const ItemCount = ({stock, counter , onAdd, handleAddCart, price}) => {
                     </IconButton>
             </div>
             <div className='container__add'>
-                <Button onClick={handleAddCart} className='button__add' variant="contained" sx={{ backgroundColor: `#834bff`, '&:hover': { backgroundColor: '#551fc8' } }} disabled={counter === `Sin Stock`}>Add to cart {!isNaN(counter) && counter * price}</Button>
+                <Button onClick={handleAddCart} className='button__add' variant="contained" sx={{ backgroundColor: `#834bff`, '&:hover': { backgroundColor: '#551fc8' } }} disabled={counter === `Sin Stock` || isInCart(id)}>Add to cart {!isNaN(counter) && counter * price}</Button>
             </div>
         </div>
 
