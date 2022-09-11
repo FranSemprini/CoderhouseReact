@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import { IconButton } from "@mui/material"
 import './ItemCount.scss'
 import { useCartContext } from '../../context/CartContext';
-import { useEffect } from 'react';
+
 
 export const ItemCount = ({stock, counter , onAdd, handleAddCart, price, id}) => {
 
@@ -17,8 +17,6 @@ export const ItemCount = ({stock, counter , onAdd, handleAddCart, price, id}) =>
     const handleAdd = () => {
         counter < stock && onAdd(counter + 1)
     }
-
-    useEffect()
 
     return (
         <div className='main__container'>
