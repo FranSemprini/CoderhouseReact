@@ -1,7 +1,7 @@
 import './Item.scss'
 import placeholder from '../../assets/placeholder.png'
 import { Link } from 'react-router-dom'
-import moreColors from '../../assets/moreColors.png'
+import sinStock from '../../assets/sinStock.png'
 
 export const Item = ({ producto }) => {
 
@@ -13,7 +13,7 @@ export const Item = ({ producto }) => {
                 <h4>{producto.nombre}</h4>
                 <h5>${producto.precio}</h5>
                 <p>{producto.descripcion}</p>
-                {producto.colours.length > 1 && <img className='product__colors' src={moreColors} />}
+                {producto.stock < 1 && <img className='product__colors' src={sinStock} alt={`Sin Stock`}/>}
             </div>
         </Link>
     )

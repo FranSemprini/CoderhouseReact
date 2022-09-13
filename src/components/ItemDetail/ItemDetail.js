@@ -7,8 +7,7 @@ import { useCartContext } from "../../context/CartContext"
 
 export const ItemDetail = ({ item }) => {
 
-    const {cart, addItem } = useCartContext()
-    console.log(cart)
+    const {addItem } = useCartContext()
     const [counter, setCounter] = useState(item.stock > 1 ? 1 : `Sin Stock`)
 
     const handleAddCart = () => {

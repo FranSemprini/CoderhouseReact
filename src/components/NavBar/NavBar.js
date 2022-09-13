@@ -66,7 +66,6 @@ export function NavBar() {
               <Avatar alt="Remy Sharp" src={logo} />
               <Typography
                 noWrap
-                component="a"
                 sx={{
                   ml: 1,
                   mt: 1,

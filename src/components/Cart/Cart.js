@@ -1,48 +1,26 @@
-import { useContext } from "react"
 import { useCartContext } from "../../context/CartContext"
 import '../Cart/Cart.scss'
-import { CartContext } from "../../context/CartContext";
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
-export const Cart = () => {
 
-    const { cart, emptyCart, removeItem } = useCartContext()
+export const Cart = ( {prod} ) => {
 
-    const { cartAmount } = useContext(CartContext)
-    const { cartTotal } = useContext(CartContext)
+    const {removeItem} = useCartContext()
 
     return (
-
-        <div className="cart__container">
-            <h1 className="cart__title">Elementos en el carrito</h1>
-            <div className="cart__data">
-                <p>Total de items: {cartAmount()}</p>
-                <p>Importe total: ${cartTotal()}</p>
-                <DeleteOutlineIcon className="data__icon" onClick={emptyCart} />
-            </div>
-
-            <div className="cart__items">
-                {cart.map((item) => (
-                    <div className="item__container" key={item.id}>
+            <div className="item__container">
                         <div className="dataL__container">
-                            <h1>{item.name}</h1>
-                            <img className="item__img" src={item.img}></img>
+                            <h1>{prod.name}</h1>
+                            <img className="item__img" src={prod.img} alt={prod.desc}></img>
                         </div>
                         <div className="dataR__container">
-                            <p>Precio: {item.precio}</p>
-                            <p>Cantidad: {item.counter}</p>
-                            <p>Total: ${item.precio * item.counter}</p>
+                            <p>Precio: {prod.precio}</p>
+                            <p>Cantidad: {prod.counter}</p>
+                            <p>Total: ${prod.precio * prod.counter}</p>
                             <div>
-                                <DeleteOutlineIcon className="remove__icon" onClick={() => {removeItem(item.id)}} />
+                                <DeleteOutlineIcon className="remove__icon" onClick={() => {removeItem(prod.id)}} />
                             </div>
                         </div>
                     </div>
                 )
-                )}
-
-            </div>
-            <h1 onClick={emptyCart}>Empty Cart</h1>
-        </div>
-
-    )
 }
