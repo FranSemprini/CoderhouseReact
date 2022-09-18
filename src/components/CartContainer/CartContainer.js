@@ -4,6 +4,8 @@ import { useCartContext } from "../../context/CartContext"
 import { CartContext } from "../../context/CartContext";
 import './CartContainer.scss'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export const CartContainer = () => {
 
@@ -12,7 +14,13 @@ export const CartContainer = () => {
     const { cartAmount } = useContext(CartContext)
     const { cartTotal } = useContext(CartContext)
 
-
+    if (cartAmount() === 0 ) {
+        return (
+            <div className="emptyCart">
+                <h2>Tu carrito esta vacio,</h2> <Link className="emptyCart__link" to='/'> <Button className="emptyCart__button" variant="contained">Regresa a la tienda</Button></Link>
+            </div>
+        )
+    }
 
     return (
         <div className="cart__container">

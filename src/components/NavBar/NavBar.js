@@ -14,8 +14,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { CartWidget } from "../CartWidget/CartWidget";
 import './NavBar.scss'
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
+import { useContext } from "react";
 
 export function NavBar() {
+  const { cartAmount } = useContext(CartContext)
+  console.log(cartAmount())
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -103,18 +107,13 @@ export function NavBar() {
                   background: "#834bff",
                 },
               }}>About us</Button>
+                            <Button variant="text" sx={{
+                color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 1.5, mr: 1, '&:hover': {
+                  color: `white`,
+                  background: "#834bff",
+                },
+              }}>LogIn</Button>
             </div>
-            <Box component="div" sx={{ display: 'inline-grid', alignItems: `center`, justifyItems: `center`, }}>
-              <div className="navBar__links">
-                <Button variant="text" sx={{
-                  color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 1, mr: 1, mt: 0.5, '&:hover': {
-                    color: `white`,
-                    background: "#834bff",
-                  },
-                }}>LogIn</Button>
-              </div>
-              <CartWidget sx={{ ml: 1.5 }} />
-            </Box>
           </Box>
           <Box component="div" sx={{ display: { xs: 'inline-grid', sm: 'none', alignItems: `center` } }}>
             <div className="navBar__links">
@@ -125,8 +124,8 @@ export function NavBar() {
                 },
               }}>LogIn</Button>
             </div>
-            <CartWidget />
           </Box>
+          {cartAmount() > 0 ? <Link className="cart navigate__links" to="/cart"><CartWidget sx={{ ml: 1.5 }} /></Link> : <Link className="cart navigate__links hidden" to="/cart"><CartWidget sx={{ ml: 1.5 }} /></Link>}
         </Toolbar>
       </Container>
     </AppBar >

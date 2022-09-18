@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { ItemDetail } from '../ItemDetail/ItemDetail'
-import { stock } from "../../data/stock"
 import CircularProgress from '@mui/material/CircularProgress';
+import { doc, getDoc} from "firebase/firestore"
+import { db } from "../../firebase/config"
 
 export const ItemDetailContainer = () => {
 
@@ -11,22 +12,13 @@ export const ItemDetailContainer = () => {
 
     const {itemId} = useParams()
 
-    const promiseItemDetailContainer = () => {
-        return new Promise ( ( resolve) => {
-            setTimeout(() => {
-                resolve(stock)
-            }, 2000) 
-        })
-    }
 
     useEffect (() => {
         setLoading(true)
-        promiseItemDetailContainer()
-            .then((res) => {
-                setItem( res.find((product) => product.id === Number(itemId)))
-            })
-            .catch ((error) => {
-                console.log(error)
+        const docRef = doc(db, 'productos', itemId)
+        getDoc(docRef)
+            .then((doc) => {
+                setItem({id: doc.id, ...doc.data()})
             })
             .finally (() => {
                 setLoading(false)

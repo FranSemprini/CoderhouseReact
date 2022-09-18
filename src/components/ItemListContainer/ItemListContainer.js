@@ -1,42 +1,33 @@
 import * as React from "react";
 import { useEffect, useState } from "react";
 import { ItemList } from '../ItemList/ItemList'
-import { stock } from '../../data/stock'
 import CircularProgress from '@mui/material/CircularProgress';
 import './ItemListContainer.scss'
 import { useParams } from "react-router-dom";
-
+import { getDocs, collection, query, where} from "firebase/firestore"
+import { db, } from "../../firebase/config"
 
 export const ItemListContainer = () => {
 
     const [productos, setProductos] = useState([])
     const [loading, setLoading] = useState(true)
-    const {categoryId} = useParams()
+    const { categoryId } = useParams()
 
-    const promiseItemListContainer = () => {
-        return new Promise((resolve, reject) => {
-            setTimeout(() => {
-                resolve(stock)
-            }, 2000)
-        })
-    }
 
     useEffect(() => {
         setLoading(true)
-        promiseItemListContainer()
-            .then((res) => {
-                if (!categoryId) {
-                setProductos(res)
-                } else {
-                    setProductos( res.filter((prod) => prod.category === categoryId))
-                }
+        // armo la referencia a la coleccion productos (nuestra db)
+        const productosRef = collection(db, 'productos')
+        const q = categoryId ? query(productosRef, where('category', '==', categoryId)) : productosRef
+        // consumir la referencia
+        getDocs(q)
+            .then((snapshot) => {
+                const productsDB = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))
+                setProductos(productsDB)
             })
-            .catch((error) => {
-                alert(error)
-            })
-            .finally(() => {
+            .finally((
                 setLoading(false)
-            })
+            ))
     }, [categoryId])
 
     return (

@@ -42,3 +42,30 @@
         }
     }
 }
+
+.emptyCart {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    > h2 {
+        font-size: 30px;
+        color: rgb(255, 166, 0);
+        margin-right: 10px;
+    }
+    .emptyCart__link {
+        text-decoration: none;
+    }
+    .emptyCart__button {
+        font-size: 30px;
+        background-color: #4f12c0;
+        padding: 5px 10px;
+        height: 40px;
+        &:hover {
+            background-color: #834bff;
+            color: rgb(255, 166, 0);
+        }
+    }
+}
+
