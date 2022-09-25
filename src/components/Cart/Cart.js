@@ -3,6 +3,7 @@ import '../Cart/Cart.scss'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 
 
+
 export const Cart = ( {prod} ) => {
 
     const {removeItem} = useCartContext()

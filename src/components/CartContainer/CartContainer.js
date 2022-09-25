@@ -30,7 +30,7 @@ export const CartContainer = () => {
                     <p>Importe total: ${cartTotal()}</p>
                     <DeleteOutlineIcon className="data__icon" onClick={emptyCart} />
                 </div>
-
+                <Link className="checkout__link" to="/checkout"><Button className="checkout__button" variant="contained"> Check out now! </Button></Link> 
                 <div className="cart__items">
                     {cart.map((item) => <Cart prod={item} key={item.id} />)}
                 </div>

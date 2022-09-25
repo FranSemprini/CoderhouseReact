@@ -69,3 +69,13 @@
     }
 }
 
+.checkout__link {
+    text-decoration: none;
+    .checkout__button {
+        background-color: #4f12c0;
+        &:hover {
+            background-color: #834bff;
+        }
+    }
+}
+

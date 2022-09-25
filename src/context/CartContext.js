@@ -20,6 +20,11 @@ export const CartProvider = ({ children }) => {
         setCart([])
     }
 
+    // const finishOrder = (id) => {
+    //  console.log(id)   
+        // setCart([])
+    // }
+
     const isInCart = (item) => {
         return cart.some((product) => product.id === item)
     }
@@ -31,8 +36,6 @@ export const CartProvider = ({ children }) => {
     const cartTotal = () => {
         return cart.reduce((acc, item) => acc + item.counter * item.precio, 0)
     }
-
-
 
     useEffect(() => {
         localStorage.setItem(`cart`, JSON.stringify(cart))
@@ -47,6 +50,7 @@ export const CartProvider = ({ children }) => {
             emptyCart,
             isInCart,
             cartTotal,
+            // finishOrder
         }}>
            {children}
         </CartContext.Provider>

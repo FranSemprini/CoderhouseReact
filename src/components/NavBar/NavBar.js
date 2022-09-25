@@ -19,7 +19,6 @@ import { useContext } from "react";
 
 export function NavBar() {
   const { cartAmount } = useContext(CartContext)
-  console.log(cartAmount())
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
