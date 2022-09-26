@@ -51,8 +51,9 @@ export const CartCheckout = () => {
 
     if (orderId) {
         return (
-            <div>
-                <h2>{orderId}</h2>
+            <div className="checkFinished">
+                <h2>Tu compra ha sido realizada con exito!</h2>
+                <h3>Tu numero de orden es: {orderId}</h3>
                 <Link className="emptyCart__link" to='/'><Button className="emptyCart__button" variant="contained">Regresa a la tienda</Button></Link>
             </div>
         )

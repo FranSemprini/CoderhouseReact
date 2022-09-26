@@ -13,3 +13,15 @@
     }
 }
 
+.checkFinished {
+    text-align: center;
+    .emptyCart__link {
+        text-decoration: none;
+    }
+    .emptyCart__button {
+        background-color: #4f12c0;
+        &:hover {
+            background-color: #834bff;
+        }
+    }
+}
