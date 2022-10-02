@@ -16,8 +16,11 @@ import './NavBar.scss'
 import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
+import { useLoginContext } from "../../context/LoginContext";
 
 export function NavBar() {
+  const { user, logout } = useLoginContext()
+  console.log(user.user)
   const { cartAmount } = useContext(CartContext)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
@@ -60,8 +63,6 @@ export function NavBar() {
               }}
             >
               <MenuItem onClick={handleClose}>Home</MenuItem>
-              <MenuItem onClick={handleClose}>Gallery</MenuItem>
-              <MenuItem onClick={handleClose}>AboutUs</MenuItem>
             </Menu>
           </Box>
           <Link to="/" className="navigate__links">
@@ -94,34 +95,24 @@ export function NavBar() {
                   },
                 }}>Home</Button>
               </Link>
-              <Button variant="text" sx={{
+
+             <span>{user.user}</span>
+              <Button variant="text" onClick={logout} sx={{
                 color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 1.5, mr: 1, '&:hover': {
                   color: `white`,
                   background: "#834bff",
                 },
-              }}>Gallery</Button>
-              <Button variant="text" sx={{
-                color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 1.5, mr: 1, '&:hover': {
-                  color: `white`,
-                  background: "#834bff",
-                },
-              }}>About us</Button>
-                            <Button variant="text" sx={{
-                color: 'white', backgroundColor: 'orange', borderColor: 'black', ml: 1.5, mr: 1, '&:hover': {
-                  color: `white`,
-                  background: "#834bff",
-                },
-              }}>LogIn</Button>
+              }}>Logout</Button>
             </div>
           </Box>
           <Box component="div" sx={{ display: { xs: 'inline-grid', sm: 'none', alignItems: `center` } }}>
             <div className="navBar__links">
-              <Button variant="text" sx={{
+              <Button variant="text" onClick={logout} sx={{
                 color: 'white', backgroundColor: 'orange', borderColor: 'black', mt: 0.5, '&:hover': {
                   color: `white`,
                   background: "#834bff",
                 },
-              }}>LogIn</Button>
+              }}>Logout</Button>
             </div>
           </Box>
           {cartAmount() > 0 ? <Link className="cart navigate__links" to="/cart"><CartWidget sx={{ ml: 1.5 }} /></Link> : <Link className="cart navigate__links hidden" to="/cart"><CartWidget sx={{ ml: 1.5 }} /></Link>}
