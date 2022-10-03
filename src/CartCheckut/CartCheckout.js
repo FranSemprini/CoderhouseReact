@@ -7,8 +7,13 @@ import { addDoc, collection } from "firebase/firestore"
 import { db } from "../firebase/config"
 import { Link } from "react-router-dom"
 import './CartCheckout.scss'
+import { useLoginContext } from "../context/LoginContext"
+
+
 
 export const CartCheckout = () => {
+
+    const { user } = useLoginContext()
 
     const { cart, cartTotal, emptyCart } = useCartContext()
 
@@ -16,7 +21,7 @@ export const CartCheckout = () => {
 
     const [values, setValues] = useState({
         name: '',
-        email: '',
+        email: user.user,
         phone: '',
     })
 

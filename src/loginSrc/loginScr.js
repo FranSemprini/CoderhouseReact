@@ -6,7 +6,7 @@ import './loginSrc.scss'
 
 export const LoginScr = () => {
 
-    const {login, user} = useContext(LoginContext)
+    const {login} = useContext(LoginContext)
     const { values, handleInputChange } = useForm({
         email: ``,
         password: ``,
@@ -41,8 +41,8 @@ export const LoginScr = () => {
                     />
                     <Button className="" type="submit">Ingresar</Button>
                 </form>
+                <h3>Using firebase auth, user: test@test.com pass: asdasd </h3>
             </div>
         </div>
-
     )
 }

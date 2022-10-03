@@ -20,7 +20,6 @@ import { useLoginContext } from "../../context/LoginContext";
 
 export function NavBar() {
   const { user, logout } = useLoginContext()
-  console.log(user.user)
   const { cartAmount } = useContext(CartContext)
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
