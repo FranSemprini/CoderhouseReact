@@ -17,6 +17,7 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import { useContext } from "react";
 import { useLoginContext } from "../../context/LoginContext";
+import { Search } from "../Search/Search";
 
 export function NavBar() {
   const { user, logout } = useLoginContext()
@@ -84,6 +85,9 @@ export function NavBar() {
               </Typography>
             </Box>
           </Link>
+        <Box className="search">
+          < Search />
+        </Box>
           <Box sx={{ display: { xs: 'none', sm: 'flex', alignItems: `center` } }}>
             <div className="navBar__links">
               <Link to="/" className="navigate__links">

@@ -1,7 +1,7 @@
 import { Button } from "@mui/material"
 import { useContext } from "react"
-import { LoginContext } from "../context/LoginContext"
-import { useForm } from "../hooks/useForm"
+import { LoginContext } from "../../context/LoginContext"
+import { useForm } from "../../hooks/useForm"
 import './loginSrc.scss'
 
 export const LoginScr = () => {
@@ -12,12 +12,13 @@ export const LoginScr = () => {
         password: ``,
     })
 
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
         let email = values.email
         let password = values.password
         login({email, password})
-
     }
 
     return (

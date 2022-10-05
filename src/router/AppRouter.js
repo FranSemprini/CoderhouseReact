@@ -6,7 +6,7 @@ import { ItemDetailContainer } from '../components/ItemDetailContainer/ItemDetai
 import { Categories } from '../components/Categories/Categories';
 import { CartContainer } from '../components/CartContainer/CartContainer';
 import { CartCheckout } from '../CartCheckut/CartCheckout';
-import { LoginScr } from '../loginSrc/loginScr'
+import { LoginScr } from '../components/loginSrc/loginScr'
 export const AppRouter = () => {
 
     const { user } = useLoginContext()
