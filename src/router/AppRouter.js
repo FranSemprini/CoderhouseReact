@@ -7,6 +7,7 @@ import { Categories } from '../components/Categories/Categories';
 import { CartContainer } from '../components/CartContainer/CartContainer';
 import { CartCheckout } from '../CartCheckut/CartCheckout';
 import { LoginScr } from '../components/loginSrc/loginScr'
+import { CreateUsr } from "../components/CreateUsr/CreateUsr";
 export const AppRouter = () => {
 
     const { user } = useLoginContext()
@@ -32,6 +33,7 @@ export const AppRouter = () => {
                     : <>
                         <Routes>
                             <Route path='/login' element={<LoginScr />} />
+                            <Route path='/signin' element={<CreateUsr />} />
                             <Route path='*' element={<Navigate to="/login" />} />
                         </Routes>
                     </>

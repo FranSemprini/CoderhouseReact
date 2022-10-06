@@ -34,7 +34,9 @@ export const Search = () => {
         }
     }, [values.search])
 
-    console.log(filtered)
+    const clearSearch = () => {
+        setFiltered([])
+    }
 
     return (
         <div>
@@ -50,7 +52,7 @@ export const Search = () => {
             />
             <div>
                 {filtered.map(({ nombre,id }) => (
-                    <Link className="link" to={`/item/${id}`}><p key={nombre}>{nombre}</p></Link>
+                    <Link className="link" to={`/item/${id}`} key={nombre}><p onClick={clearSearch} >{nombre}</p></Link>
                 ))}
             </div>
         </div>

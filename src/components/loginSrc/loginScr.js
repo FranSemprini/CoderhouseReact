@@ -3,22 +3,21 @@ import { useContext } from "react"
 import { LoginContext } from "../../context/LoginContext"
 import { useForm } from "../../hooks/useForm"
 import './loginSrc.scss'
+import { Link } from "react-router-dom"
 
 export const LoginScr = () => {
 
-    const {login} = useContext(LoginContext)
+    const { login } = useContext(LoginContext)
     const { values, handleInputChange } = useForm({
         email: ``,
         password: ``,
     })
 
-
-
     const handleSubmit = (e) => {
         e.preventDefault()
         let email = values.email
         let password = values.password
-        login({email, password})
+        login({ email, password })
     }
 
     return (
@@ -42,7 +41,7 @@ export const LoginScr = () => {
                     />
                     <Button className="" type="submit">Ingresar</Button>
                 </form>
-                <h3>Using firebase auth, user: test@test.com pass: asdasd </h3>
+                <Link to="/signin"><h3>Don't have an account? Sign in here!</h3></Link>
             </div>
         </div>
     )
