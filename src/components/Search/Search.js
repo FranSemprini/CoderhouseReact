@@ -1,15 +1,17 @@
-import { useForm } from "../../hooks/useForm"
 import { TextField } from "@mui/material"
 import { getDocs, collection } from "firebase/firestore"
 import { db, } from "../../firebase/config"
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Link } from 'react-router-dom'
 import './Search.scss'
 
 export const Search = () => {
-    const { values, handleInputChange } = useForm({
-        search: ``
-    })
+    
+    const [value, setInputValue] = useState("");
+
+    const handleUserInput = (e) => {
+        setInputValue(e.target.value);
+      };
 
     const [productos, setProductos] = useState([])
     const [filtered, setFiltered] = useState([])
@@ -24,25 +26,28 @@ export const Search = () => {
     }, [])
 
     useEffect(() => {
-        if (values.search.length >= 3) {
+        if (value.length >= 3) {
             const filteredProd = productos.filter((prods) =>
-                prods.nombre.toLowerCase().includes((values.search).toLowerCase())
+                prods.nombre.toLowerCase().includes((value).toLowerCase())
             )
             setFiltered(filteredProd)
         } else {
             setFiltered([])
         }
-    }, [values.search])
+    }, [value])
+
+    const test = useRef(null);
 
     const clearSearch = () => {
-        setFiltered([])
+        setInputValue("");
     }
 
     return (
         <div>
             <TextField
-                defaultValue={values.search}
-                onChange={handleInputChange}
+                ref={test}
+                value={value}
+                onChange={handleUserInput}
                 name="search"
                 type={`text`}
                 placeholder="Search"

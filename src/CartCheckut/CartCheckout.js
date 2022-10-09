@@ -3,15 +3,18 @@ import { Button } from "@mui/material"
 import { useState } from "react"
 import { Navigate } from "react-router-dom"
 import { useCartContext } from "../context/CartContext"
-import { addDoc, collection } from "firebase/firestore"
+import { addDoc, collection, doc, updateDoc, getDoc } from "firebase/firestore"
 import { db } from "../firebase/config"
 import { Link } from "react-router-dom"
 import './CartCheckout.scss'
 import { useLoginContext } from "../context/LoginContext"
-
-
+import { useForm } from "../hooks/useForm"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const CartCheckout = () => {
+
+    const [isDisabled, handleDisabled] = useState(false);
 
     const { user } = useLoginContext()
 
@@ -19,7 +22,7 @@ export const CartCheckout = () => {
 
     const [orderId, setOrderId] = useState(null)
 
-    const [values, setValues] = useState({
+    const { values, handleInputChange } = useForm({
         name: '',
         email: user.user,
         phone: '',
@@ -27,31 +30,74 @@ export const CartCheckout = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        // if (values.name.length < 5) {
-        // sarasa
-        // return
-        // }
-
+        handleDisabled(true)
+        const missingItems = []
+        const comprados = []
+        if (values.name.length < 5 || values.phone.length < 5 || values.email.length < 5) {
+            toast.error(`Por favor completa los campos de forma correcta`, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return
+        }
         const ordenesRef = collection(db, 'ordenes')
+        order.items.forEach(element => {
+            const docRef = doc(db, 'productos', element.id)
+            const toCheck = () => {
+                const response = getDoc(docRef)
+                    .then((doc) => {
+                        return doc.data()
+                    })
+                return response
+            }
 
-        addDoc(ordenesRef, order)
-            .then((doc) => {
-                setOrderId(doc.id)
-                emptyCart([])
-            })
+            toCheck()
+                .then((response) => {
+                    if (response.stock < element.counter) {
+                        missingItems.push(response)
+                        toast.error(`El producto ${response.nombre} no pudo ser comprado por falta de stock`, {
+                            position: "top-right",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        });
+                        return
+                    } else {
+                        updateDoc(docRef, { stock: response.stock - element.counter })
+                        toast.success(`El producto ${response.nombre} se ha comprado con exito, redireccionando.`, {
+                            position: "top-right",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                        });
+                        comprados.push(response.nombre)
+                        setTimeout(function () {
+                            addDoc(ordenesRef, order)
+                                .then((doc) => {
+                                    setOrderId(doc.id)
+                                    emptyCart([])
+                                })
+                        }, 5000);
+                    }
+                })
+        })
     }
 
     const order = {
         client: values,
         items: cart,
         total: cartTotal()
-    }
-
-    const handleImputChange = (e) => {
-        setValues({
-            ...values,
-            [e.target.name]: e.target.value
-        })
     }
 
     if (orderId) {
@@ -73,13 +119,13 @@ export const CartCheckout = () => {
             <h1>
                 Your cart is ready for the check out!
             </h1>
-
+            <ToastContainer />
             <form onSubmit={handleSubmit}>
                 <TextField
                     name="name"
                     value={values.name}
-                    onChange={handleImputChange}
-                    style={{ width: "50%"}}
+                    onChange={handleInputChange}
+                    style={{ width: "50%" }}
                     type="text"
                     label="Name"
                     variant="outlined"
@@ -88,8 +134,8 @@ export const CartCheckout = () => {
                 <TextField
                     name="email"
                     value={values.email}
-                    onChange={handleImputChange}
-                    style={{ width: "50%"}}
+                    onChange={handleInputChange}
+                    style={{ width: "50%" }}
                     type="text"
                     label="Email"
                     variant="outlined"
@@ -98,15 +144,15 @@ export const CartCheckout = () => {
                 <TextField
                     name="phone"
                     value={values.phone}
-                    onChange={handleImputChange}
-                    style={{ width: "50%"}}
+                    onChange={handleInputChange}
+                    style={{ width: "50%" }}
                     type="text"
                     label="Phone"
                     variant="outlined"
                     className="imput__form"
                 />
                 <br />
-                <Button className="checkOut__button" type="submit" variant="contained" color="primary">
+                <Button className="checkOut__button" type="submit" variant="contained" color="primary" disabled={isDisabled}>
                     save
                 </Button>
             </form>

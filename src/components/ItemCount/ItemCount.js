@@ -31,8 +31,13 @@ export const ItemCount = ({ stock, counter, onAdd, handleAddCart, price, id }) =
             </div>
             <div className='container__add'>
                 <div className="button__add">
-                    {stock > counter &&
-                        !isInCart(id) ? <Button onClick={handleAddCart} className='button__add' variant="contained" sx={{ backgroundColor: `#834bff`, '&:hover': { backgroundColor: '#551fc8' } }} disabled={counter === `Sin Stock` || isInCart(id)}> Add to cart {isNaN(counter) ? "" : `($ ${counter * price})`} </Button> : <Link to="/cart/" className="button__add--cart"><Button className='button__add' variant="contained" sx={{ backgroundColor: `orange`, '&:hover': { backgroundColor: '#D2691E' } }}> Go to cart </Button></Link>}
+                    {stock >= counter &&
+                        !isInCart(id) ? <Button onClick={handleAddCart} className='button__add' variant="contained" sx={{ backgroundColor: `#834bff`, '&:hover': { backgroundColor: '#551fc8' } }} disabled={counter === `Sin Stock` || isInCart(id)}> Add to cart {isNaN(counter) ? "" 
+                        : 
+                        `($ ${counter * price})`} </Button> : 
+                        <Link to={stock > 0 ? "/cart/" : ``} className="button__add--cart"><Button disabled={counter === `Sin Stock`} className='button__add' variant="contained" sx={{ backgroundColor: `orange`, '&:hover'
+                        :
+                        { backgroundColor: '#D2691E' } }}> Go to cart </Button></Link>}
                 </div>
             </div>
         </div>
