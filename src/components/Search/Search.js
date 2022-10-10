@@ -6,12 +6,12 @@ import { Link } from 'react-router-dom'
 import './Search.scss'
 
 export const Search = () => {
-    
+
     const [value, setInputValue] = useState("");
 
     const handleUserInput = (e) => {
         setInputValue(e.target.value);
-      };
+    };
 
     const [productos, setProductos] = useState([])
     const [filtered, setFiltered] = useState([])
@@ -43,8 +43,9 @@ export const Search = () => {
     }
 
     return (
-        <div>
+        <div className="container">
             <TextField
+                size="small"
                 ref={test}
                 value={value}
                 onChange={handleUserInput}
@@ -56,7 +57,7 @@ export const Search = () => {
                 className="imput__form"
             />
             <div>
-                {filtered.map(({ nombre,id }) => (
+                {filtered.map(({ nombre, id }) => (
                     <Link className="link" to={`/item/${id}`} key={nombre}><p onClick={clearSearch} >{nombre}</p></Link>
                 ))}
             </div>

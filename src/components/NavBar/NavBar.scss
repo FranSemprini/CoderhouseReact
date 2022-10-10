@@ -25,7 +25,24 @@
 .search {
     position: fixed;
     background-color: orange;
-    top: 4px;
+    top: 12px;
     left: 40%;
+    transform: translateX(-40%);
 
+}
+
+@media only screen and (max-width: 770px) {
+    .search {
+        top: 64px;
+        left: 0px;
+        transform: translateX(0px);
+    }
+}
+
+@media only screen and (max-width: 599px) {
+    .search {
+        top: 56px;
+        left: 0px;
+        transform: translateX(0px);
+    }
 }

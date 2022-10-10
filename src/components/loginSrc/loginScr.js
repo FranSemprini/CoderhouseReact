@@ -4,6 +4,8 @@ import { LoginContext } from "../../context/LoginContext"
 import { useForm } from "../../hooks/useForm"
 import './loginSrc.scss'
 import { Link } from "react-router-dom"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const LoginScr = () => {
 
@@ -42,6 +44,7 @@ export const LoginScr = () => {
                     <Button className="" type="submit">Ingresar</Button>
                 </form>
                 <Link to="/signin"><h3>Don't have an account? Sign in here!</h3></Link>
+                <ToastContainer />
             </div>
         </div>
     )

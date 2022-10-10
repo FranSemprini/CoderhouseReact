@@ -62,7 +62,7 @@ export function NavBar() {
                 horizontal: 'left',
               }}
             >
-              <MenuItem onClick={handleClose}>Home</MenuItem>
+              <MenuItem component={Link} to='/' onClick={handleClose}>Home</MenuItem>
             </Menu>
           </Box>
           <Link to="/" className="navigate__links">
