@@ -5,10 +5,14 @@ import { NavBar } from '../components/NavBar/NavBar'
 import { ItemDetailContainer } from '../components/ItemDetailContainer/ItemDetailContainer';
 import { Categories } from '../components/Categories/Categories';
 import { CartContainer } from '../components/CartContainer/CartContainer';
-import { CartCheckout } from '../CartCheckut/CartCheckout';
-import { LoginScr } from '../components/loginSrc/loginScr'
 import { CreateUsr } from "../components/CreateUsr/CreateUsr";
+import { LoginScr } from '../components/loginSrc/loginScr'
+import { CartCheckout } from "../components/CartCheckout/CartCheckout";
+
 export const AppRouter = () => {
+
+
+
 
     const { user } = useLoginContext()
 

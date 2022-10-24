@@ -36,7 +36,7 @@ export const Search = () => {
         }
     }, [value])
 
-    const test = useRef(null);
+    const ref = useRef(null);
 
     const clearSearch = () => {
         setInputValue("");
@@ -46,7 +46,7 @@ export const Search = () => {
         <div className="container">
             <TextField
                 size="small"
-                ref={test}
+                ref={ref}
                 value={value}
                 onChange={handleUserInput}
                 name="search"

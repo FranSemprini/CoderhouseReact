@@ -15,11 +15,8 @@ export const ItemListContainer = () => {
 
 
     useEffect(() => {
-        setLoading(true)
-        // armo la referencia a la coleccion productos (nuestra db)
         const productosRef = collection(db, 'productos')
         const q = categoryId ? query(productosRef, where('category', '==', categoryId)) : productosRef
-        // consumir la referencia
         getDocs(q)
             .then((snapshot) => {
                 const productsDB = snapshot.docs.map((doc) => ({id: doc.id, ...doc.data()}))
@@ -32,8 +29,7 @@ export const ItemListContainer = () => {
 
     return (
         <div>
-            {loading ? <div className="loader"> <CircularProgress color="secondary" /></div> : <div className="list__container">  <ItemList productos={productos} /></div>}
-
+             <div className="list__container"><ItemList productos={productos} /></div>
         </div>
     )
 

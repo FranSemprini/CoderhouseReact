@@ -2,13 +2,13 @@ import { TextField } from "@mui/material"
 import { Button } from "@mui/material"
 import { useState } from "react"
 import { Navigate } from "react-router-dom"
-import { useCartContext } from "../context/CartContext"
+import { useCartContext } from "../../context/CartContext"
 import { addDoc, collection, doc, updateDoc, getDoc } from "firebase/firestore"
-import { db } from "../firebase/config"
+import { db } from "../../firebase/config"
 import { Link } from "react-router-dom"
 import './CartCheckout.scss'
-import { useLoginContext } from "../context/LoginContext"
-import { useForm } from "../hooks/useForm"
+import { useLoginContext } from "../../context/LoginContext"
+import { useForm } from "../../hooks/useForm"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -81,13 +81,11 @@ export const CartCheckout = () => {
         }
     }
 
-
     const order = {
         client: values,
         items: cart,
         total: cartTotal()
     }
-
 
     if (orderId !== "failed" && orderId !== null) {
         const toShow = itemsToShow.map((e) => { return e.nombre })
@@ -114,7 +112,6 @@ export const CartCheckout = () => {
             </div>
         )
     }
-
 
 
     if (cart.length === 0) {
